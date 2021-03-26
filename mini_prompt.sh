@@ -1,11 +1,24 @@
 #!/bin/bash
 
+# __  __ _       _ _____                           _
+# |  \/  (_)     (_)  __ \                         | |
+# | \  / |_ _ __  _| |__) | __ ___  _ __ ___  _ __ | |_
+# | |\/| | | '_ \| |  ___/ '__/ _ \| '_ ` _ \| '_ \| __|
+# | |  | | | | | | | |   | | | (_) | | | | | | |_) | |_
+# |_|  |_|_|_| |_|_|_|   |_|  \___/|_| |_| |_| .__/ \__|
+#                                            | |
+#                                            |_|
+
+# MiniPrompt, a lighting fast, yet, feature rich bash shell prompt!
+
+
 #-------------------=== Prompt Config ===-------------------------------
 success_symbol="λ"
 error_symbol="✗"
 reset="\[\e[m\]"
 this="$(basename "${BASH_SOURCE[0]}")"
 skip_init=false
+usr_content="\w"
 
 # main functionalities
 ssh_prompt=true
@@ -14,7 +27,7 @@ add_exit=true
 
 # extensions
 extensions_main=false
-GIT_PROMPT=false
+GIT_PROMPT=true
 KUBE_PROMPT=false
 
 script_help=$( cat << EOF
@@ -172,15 +185,15 @@ function miniprompt_path() {
 # prepares the prompt variables
 function reset_prompt() {
     export PS1_previous_exit="$?"
-    export PS1_prefix=''
-    PS1_prefix='\[\e]0;\w\a\]'   # window title
-    export PS1_content='[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]'
+    export PS1_prefix="\[\e]0;\w\a\]"   # window title
+    export PS1_content="[\[\e[3;33m\]${usr_content}\[\e[0m\]]\[\e[1;32m\]"
 
     # examples for PS1:
         # export PS1_content='\[\033[00m\]\w\[\e[0m\]\[\e[1;32m\]'
         # export PS1_content='\[\e[1m\]\w\[\e[0m\]'
+        # export PS1_content='\[\e]0;\u@\h: \w\a\]\e[1;34m\e[3;32m\w\e[0m\e[0m > '
 
-    export PS1_suffix=' ${success_symbol}\[\e[0m\] '
+    export PS1_suffix=" ${success_symbol}\[\e[0m\] "
 }
 
 # make PS1_suffix red if the previous command failed
@@ -194,37 +207,7 @@ function add_exit_code_to_prompt() {
     fi
 }
 
-# display git branch and repo state asterisk after path, if inside of a repository
 function add_git_to_prompt() {
-    local prompt
-    local branch
-    local status_count
-
-    # if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ] || [ "$(git rev-parse --is-inside-git-dir 2>/dev/null)" = 'true' ]; then
-    if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ]]; then
-
-        branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
-        [ -z "$branch" ] && branch='(no branch)'
-
-        if [ "$(git rev-parse --is-inside-git-dir 2>/dev/null)" != 'true' ]; then
-          status_count="$(git status --porcelain | wc -l)"
-        fi
-
-    elif [ "$(git rev-parse --is-bare-repository 2>/dev/null)" = 'true' ]; then
-        branch='(bare repo)'
-    fi
-
-    if [ -n "$branch" ]; then
-        if [ "${status_count:-0}" -gt 0 ]; then
-            prompt="\[\e[1;33m\]${branch}*\[\e[0m\]"
-        else
-            prompt="\[\e[36m\]${branch}\[\e[0m\]"
-        fi
-        PS1_content="${PS1_content:-} ${prompt}"
-    fi
-}
-
-function add_git_to_prompt2() {
     if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ]]; then
         # local branch=`git branch --show-current`
         PS1_content="${PS1_content:-} (`git branch --show-current`)"
@@ -286,7 +269,7 @@ function main_prompt() {
     if [[ "$extensions_main" == "false" ]]; then
         :
     elif [[ "$extensions_main" == "true" ]]; then
-        test_extension "Git Branch" $GIT_PROMPT $bin_git "add_git_to_prompt2"
+        test_extension "Git Branch" $GIT_PROMPT $bin_git "add_git_to_prompt"
         test_extension "Kubernetes Container" $KUBE_PROMPT $bin_kubectl "add_kube_to_prompt"
     else
         echo -e "Configuration variable 'extensions_main' was set to '$extensions_main', which is not a valid value. It can either be set to 'true' or 'false' in $this located at `miniprompt_path`, otherwise you'll see this message"
