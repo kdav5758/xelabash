@@ -47,9 +47,11 @@
 <img
   src="https://i.imgur.com/0MOao4K.gif"
   alt="MiniPrompt with Kitty Terminal and a custom theme"
-  width="50%"
+  width="55%"
   align="right"
 />
+
+<div style="text-align: justify">
 
 **Minimalist Prompt**, a simple and lightning fast, yet, *feature rich*, bash prompt
 
@@ -58,6 +60,8 @@
 - **Feature rich:** regardless of being a "bare bones prompt", has everything that's needed.
 - **Easy:** quick installation and configuration.
 - **Organized:** everything is and depends on one file.
+
+</div>
 
 <!--
 ![xelabash](images/base.png)
@@ -72,25 +76,211 @@
 
 ## 📋 Features
 
-- Supports *extensions*
-  - Display Git branch when in a Git repo
-  - Display Kubernetes context and namespace
-- Changes color/symbol according to last command's exit status
-- Changes prompt while being connected through **ssh**
-- Improves bash's default autocompletion
-- Modifies `history` in order to show more information
-- Comes with `odf.sh` (On Da Fly), which allows you to customize the prompt *on the fly*
-- Changes Directory colors!
+<details>
+    <summary>Supports extensions!</summary>
+    <br />
+    <div style="text-align: justify">
+        By definition, an extension is "a part that is added to something to enlarge or prolong it." In this context, these are added to prompt for showing extra information that might be relevant to the user, currently it supports the following ones:
+    </div>
+    <br />
+    <details>
+        <summary>Current git branch on prompt</summary>
+        <br />
+        <div style="text-align: justify">
+            It shows the current git branch only if the user is inside a git repository.
+        </div>
+        <br />
+        <br />
+        <p align="center">
+            <img
+            src="https://i.imgur.com/hqUUcgB.gif"
+            alt="Git branch on prompt"
+            width="70%"
+            />
+            <center>
+                <figcaption>Git branch on prompt</figcaption>
+            </center>
+        </p>
+    </details>
+    <details>
+        <summary>Current Kubernetes container</summary>
+        <br />
+        <div style="text-align: justify">
+            It shows the current Kubernetes container.
+        </div>
+        <br />
+        <br />
+        <p align="center">
+            <img
+            src="https://i.imgur.com/zUHvERF.png"
+            alt="Kubernetes container on prompt"
+            width="70%"
+            />
+            <center>
+                <figcaption>Kubernetes container on prompt</figcaption>
+            </center>
+        </p>
+    </details>
+    <br />
+</details>
+
 
 <details>
-    <summary>Modifies `history` in order to show more information</summary>
-    What this does it that it appends a formatted version of the date and the time at which *x* command was executed.
-    <img
+    <summary>You can customize prompt's functions On Da Fly (w/ on_da_fly.sh)</summary>
+    <br />
+    <div style="text-align: justify">
+        This is a companion for the prompt itself. The prompt is, of course, not dependent to this file, however it's a handy dandy script to have. This script allows you modify many of the prompts functions and specs from the command line with some simple commands for the current terminal session. The following are the commands:
+    </div>
+<p>
+
+```
+$ odf --help
+
+This script simplifies the process of changing MiniPrompt's configuration variables
+on the fly for the current terminal session
+
+Usage:
+    #0: bash [arg] <modifier(s)>
+    #1: bash [flag]
+Arguments:
+    ex, exe,extensions,extensions_main              Modify 'extensions_main' var
+    gp, git,git_prompt,GIT_PROMPT                   Modify 'GIT_PROMPT' var
+    kb, kube,kubernetes_prompt,KUBE_PROMPT          Modify 'KUBE_PROMPT' var
+    mb, b,my_bin,MY_BIN                             Modify 'MY_BIN' var
+    ae, add_exit,ADD_EXIT                           Modify 'add_exit' var
+    si, skip_init,SKIP_INIT                         Modify 'skip_init' var
+Modifiers: (only for arguments)
+    f/false/FALSE                                   Disables [arg]
+    t/true/TRUE                                     Enables [arg]
+Flags:
+    -h,--help                                       See this help message.
+    -d, -dis,-disable,-DISABLE                      Disable MiniPrompt
+
+Examples:
+    #0: bash gp t
+        Explanation: This will export the 'GIT_PROMPT' variable as true (enables it to show branch on prompt)
+    #1: bash ex f
+        Explanation: This will export the 'extensions_main' variable as false (disables all extensions)
+    #2: bash ae t
+        Explanation: This will export the 'add_exit' variable as true (enables exit status to be shown on prompt)
+
+```
+</p>
+    <br />
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/0MOao4K.gif"
+        alt="Example: dding git branch and customizing exit status"
+        width="70%"
+        />
+        <center>
+            <figcaption>Example: adding git branch and customizing exit status</figcaption>
+        </center>
+    </p>
+</details>
+
+
+<details>
+    <summary>Changes Directory colors!</summary>
+    <br />
+    <div style="text-align: justify">
+        It guarantees that the directories are always colorized regardless of which command you are using to list the files in x dir (e.g. ls, exa.)
+    </div>
+    <br />
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/zUHvERF.png"
+        alt="Blue dirs"
+        width="70%"
+        />
+        <center>
+            <figcaption>Blue dirs</figcaption>
+        </center>
+    </p>
+</details>
+
+
+<details>
+    <summary>Changes prompt while being connected through ssh</summary>
+    <br />
+    <div style="text-align: justify">
+        It simply changes the prompt according to whether the user is ssh-ing into somewhere.
+    </div>
+    <br />
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/JVcfDbu.gif"
+        alt="SSH prompt"
+        width="70%"
+        />
+        <center>
+            <figcaption>SSH Prompt</figcaption>
+        </center>
+    </p>
+</details>
+
+<details>
+    <summary>Improves bash's default autocompletion</summary>
+    <br />
+    <div style="text-align: justify">
+        Mainly, it removes case sensitiveness, therefore, typing "cmd" and then pressing <tab>, for intance, will get you the same output as if you where doing the same but wiht "CMD". Furthermore, it also colors output according to how close the match is to the word/command you are typing. By lexical comparison, it will highlight the matched part with purple, if the other part is predictibly matchable, it will highlight it in green, but if the other part of the is not quite so similar, it will highlight it with blue.
+    </div>
+    <br />
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/LcemeHw.gif"
+        alt="Improved autocompletion"
+        width="70%"
+        />
+        <center>
+            <figcaption>Improved autocompletion</figcaption>
+        </center>
+    </p>
+</details>
+
+
+<details>
+    <summary>Displays last command's exit status</summary>
+    <br />
+    <div style="text-align: justify">
+        Changes the prompt's last char color and/or symbol (according to user's specifications) respecting to the las command's exit status. If it was 0, then prompt will display the 'succes_symbol' in a green color, but if it's something other than that, it will display the 'error_symbol' in a red color (both by default).
+    </div>
+    <br />
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/6GAjKij.gif"
+        alt="Exit status affects prompt"
+        width="70%"
+        />
+        <center>
+            <figcaption>Exit status affecting prompt</figcaption>
+        </center>
+    </p>
+</details>
+
+<details>
+    <summary>Modifies history in order to show more information</summary>
+    <br />
+    <div style="text-align: justify">
+        What this does it that it appends a formatted version of the date and the time at which *x* command was executed.
+    </div>
+    <br />
+    <br />
+    <p align="center">
+        <img
         src="https://i.imgur.com/4n8vnh1.gif"
         alt="Custom history"
-        width="50%"
-        align="right"
-    />
+        width="70%"
+        />
+        <center>
+            <figcaption>Custom history</figcaption>
+        </center>
+    </p>
 </details>
 
 ## Install and Setup
