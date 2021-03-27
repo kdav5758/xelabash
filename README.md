@@ -37,7 +37,7 @@
 </p>
 
 <p align="center">
-  <a href="#📋-features">Features</a>
+  <a href="#features">Features</a>
   ·
   <a href="#🍉-configuration">Configuration</a>
   ·
