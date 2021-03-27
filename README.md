@@ -298,8 +298,8 @@ Examples:
 
 ### Prerequisites
 
-- [Bash 4.4+](https://www.gnu.org/software/bash/)
-- A [Nerd Font](https://www.nerdfonts.com/) installed and enabled in the terminal (e.g. [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads)).
+- [Bash 4.4+](https://www.gnu.org/software/bash/) (See [this manual](https://www.gnu.org/software/bash/manual/html_node/Installing-Bash.html) for the installation process.)
+- A [Nerd Font](https://www.nerdfonts.com/) installed and enabled in the terminal (e.g. [Hack Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)) (Refer to [this](https://www.youtube.com/watch?v=fR4ThXzhQYI) explanation video on how to install one.)
 
 ### Download
 MiniPrompt can be downloaded in two different forms:
