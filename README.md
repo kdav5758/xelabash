@@ -189,7 +189,6 @@ Examples:
     </p>
 </details>
 
-
 <details>
     <summary>Changes Directory colors!</summary>
     <br />
@@ -206,6 +205,26 @@ Examples:
         />
         <center>
             <figcaption>Blue dirs</figcaption>
+        </center>
+    </p>
+</details>
+
+<details>
+    <summary>Renames tab/win to current dir</summary>
+    <br />
+    <div style="text-align: justify">
+        Renames the current tab/window accordingly to your current directory, of course, triming $HOME and replacing it with '~' if located at \$HOME or any inner dir.
+    </div>
+    <br />
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/hdlD7rH.png"
+        alt="Renamed tabs"
+        width="70%"
+        />
+        <center>
+            <figcaption>Renamed tabs/win</figcaption>
         </center>
     </p>
 </details>
@@ -469,8 +488,8 @@ The following ones are the projects that inspired the creating of MiniPrompt. If
 - Why doesn't it look like in the Demo?
 
 There two possible explanations for this:
-1. You changed the `$usr_prompt` variable to something else, casuing a different look in the prompt
-2. In the demo, the [Kitty terminal](https://github.com/kovidgoyal/kitty) with a custom theme inspired by the [Espresso theme](https://github.com/dexpota/kitty-themes#espresso) provided at the Kitty [Themes repository](https://github.com/dexpota/kitty-themes)
+1. You changed the `$usr_prompt` variable to something else, causing a different look in the prompt.
+2. In the demo, the [Kitty terminal](https://github.com/kovidgoyal/kitty) with a custom theme inspired by the [Espresso theme](https://github.com/dexpota/kitty-themes#espresso) provided at the Kitty [Themes repository](https://github.com/dexpota/kitty-themes).
 
 - Why can't I copy the files to `/usr/local/bin`?
 
