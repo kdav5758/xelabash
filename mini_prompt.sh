@@ -37,6 +37,8 @@ extensions_main=false
 GIT_PROMPT=true
 KUBE_PROMPT=false
 
+#-------------------=== Prompt Config ===-------------------------------
+
 script_help=$( cat << EOF
 
 This script simplifies the process of changing MiniPrompt's configuration variables

@@ -71,8 +71,18 @@
 ## Table of Contents
 
 * [Features](#📋-features)
-  * [Home](#home)
-
+* [Installation and Setup](#📦-install-and-setup)
+    * [Prerequisites](#prerequisites)
+    * [Download](#download)
+        * [Method #1](#method-1)
+        * [Method #2](#method-2)
+            * [Manually](#manually-recommended)
+            * [With install.sh](#with-installsh)
+    * [Setup](#setup)
+* [Configuration](#🍉-configuration)
+    * [Annotations](#annotations)
+* [Inspirations](#☁%EF%B8%8F-inspirations)
+* [Reporting Issues](#⚠%EF%B8%8F-reporting-issues)
 
 ## 📋 Features
 
@@ -283,54 +293,91 @@ Examples:
     </p>
 </details>
 
-## Install and Setup
+## 📦 Install and Setup
 
 ### Prerequisites
 
+- [Bash 4.4+](https://www.gnu.org/software/bash/)
 - A [Nerd Font](https://www.nerdfonts.com/) installed and enabled in the terminal (e.g. [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads)).
-- [bash 4.4+](https://www.gnu.org/software/bash/)
 
 ### Download
 MiniPrompt can be downloaded in two different forms:
 1. Stable: Going to the [realses page](https://github.com/kdav5758/MiniPrompt/releases) of the repository and downloading the .zip file.
 2. Testing: Cloning the repository.
+    1. Manually
+    2. Using the `install.sh` script
 
 #### Method #1
 ```bash
 $ git clone
 ```
-### Method #2
+#### Method #2
+##### Manually (recommended)
 ```bash
+$ sudo chmod 775 /usr/local/bin
 $ cd /usr/local/bin/
-$ git clone https://github.com/kdav5758/MiniPrompt
-$ cd MiniPrompt
+$ git clone https://github.com/kdav5758/.dotfiles/tree/dev
+$ sudo chmod 775 /usr/local/bin/MiniPrompt/mini_prompt.sh; sudo chmod 775 /usr/local/bin/MiniPrompt/on_da_fly.sh
+```
+##### With `install.sh`
+```bash
+$ wget --output-document=/tmp/install.sh wget https://raw.githubusercontent.com/kdav5758/MiniPrompt/dev/install.sh
+$ sudo chmod 775 /tmp/install.sh
+$ bash /tmp/install.sh
 ```
 
-### Configuration
-
-
-
-
-To install, simply clone this repo and source `xela.bash` in your `.bash_profile`. (If `.bash_profile` doesn't work, try `.bashrc`.)
+### Setup
+Now that you have MiniPrompt downloaded with the appropriate execution permissions, you'll have to configure it on your .bashrc file, usually located at `$HOME`. You should copy and paste the contents of the [.bashrc file located in the repo](https://github.com/kdav5758/MiniPrompt/blob/dev/.bashrc) to `~/.bashrc` (or wherever it's located at). However, you can also use this commands:
 
 ```bash
-cd
-git clone --depth=1 https://github.com/aelindeman/xelabash "${XDG_DATA_HOME:-~/.local/share}/xelabash"
-echo 'source "${XDG_DATA_HOME:-~/.local/share}/xelabash/xela.bash"' >> .bash_profile
+$ cd /tmp/
+$ wget https://raw.githubusercontent.com/kdav5758/MiniPrompt/dev/.bashrc
+$ cat .bashrc >> ~/.bashrc
 ```
 
-Xelabash will load configuration files from the `config.d/` folder in this repository, so you can fork this repo and add your own aliases, configs, functions, environment variables, or whatever else you need.
+(If `~/.bashrc` doesn't work, try `~/.bash_profile`.)
 
-Git and Kubernetes prompt pieces are **opt-in.** Just set `GIT_PROMPT=true` and/or `KUBE_PROMPT=true` before you load Xelabash:
+## 🍉 Configuration
+As it's stated at the top of the README, everything relies on one single file, including the configuration. The configuration is at the top of the [mini_prompt.sh](https://github.com/kdav5758/MiniPrompt/blob/dev/mini_prompt.sh) file and can be twicked from there, by default this is the configuration:
 
 ```bash
+# prompt symbols
+success_symbol="λ"
+error_symbol="✗"
+git_branch_icon=""     # requires a patched Nerd Font
+kube_icon=""           # reguires a patched Nerd Font
+
+# other
+reset="\[\e[m\]"
+this="$(basename "${BASH_SOURCE[0]}")"
+skip_init=false
+# usr_content="\w"
+usr_content="[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]"
+
+# main functionalities
+ssh_prompt=true
+my_bin=false
+add_exit=true
+
+# extensions
+extensions_main=false
 GIT_PROMPT=true
-KUBE_PROMPT=true
-source ~/.local/share/xelabash/xela.bash
+KUBE_PROMPT=false
 ```
 
-Alternatively, if you don't want to always see them, use a tool like [direnv](https://github.com/direnv/direnv) to set those environment variables conditionally based on your working directory.
+### Annotations
+- If `$extensions_main` is set to false, it won't even check if the other extensions (e.g. `$GIT_PROMPT`) are set to true, this is so that the prompt can be `lightning fast`!
+- `$usr_content` is where you will specify the contents of the prompt
+- Below `#prompt symbols` you will find the symbols that the prompt takes according to the current event.
+- If `$prompt_init` is set to false, MiniPrompt won't start.
 
+## ☁️ Inspirations
+The following ones are the projects that inspired the creating of MiniPrompt. If possible go check them out to see why are they so amazing ;)
+- [aelindeman/xelabash](https://github.com/aelindeman/xelabash): Bash prompt with minimal functions.
+- [starship/starship](https://github.com/starship/starship): Customizable cross-shell prompt.
+- [agkozak/polyglot](https://github.com/agkozak/polyglot): ASCII-only cross-shell git prompt.
+
+<!--
 ## More pictures
 
 - Full `cwd`
@@ -356,3 +403,6 @@ Alternatively, if you don't want to always see them, use a tool like [direnv](ht
 - ...and they all work in combination with each other
 
   ![combo](images/combo.png)
+-->
+## ⚠️ Reporting Issues
+Issues are used to track todos, bugs, feature requests, and more, in this case this project has no special way for making issues, thus you can simply go to the [Issues section](https://github.com/kdav5758/MiniPrompt/issues).
