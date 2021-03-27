@@ -285,7 +285,31 @@ Examples:
 
 ## Install and Setup
 
-Works best with bash 4.4+. There are no dependencies to install.
+### Prerequisites
+
+- A [Nerd Font](https://www.nerdfonts.com/) installed and enabled in the terminal (e.g. [Fira Code Nerd Font](https://www.nerdfonts.com/font-downloads)).
+- [bash 4.4+](https://www.gnu.org/software/bash/)
+
+### Download
+MiniPrompt can be downloaded in two different forms:
+1. Stable: Going to the [realses page](https://github.com/kdav5758/MiniPrompt/releases) of the repository and downloading the .zip file.
+2. Testing: Cloning the repository.
+
+#### Method #1
+```bash
+$ git clone
+```
+### Method #2
+```bash
+$ cd /usr/local/bin/
+$ git clone https://github.com/kdav5758/MiniPrompt
+$ cd MiniPrompt
+```
+
+### Configuration
+
+
+
 
 To install, simply clone this repo and source `xela.bash` in your `.bash_profile`. (If `.bash_profile` doesn't work, try `.bashrc`.)
 
