@@ -106,9 +106,9 @@
             alt="Git branch on prompt"
             width="70%"
             />
-            <center>
-                <figcaption>Git branch on prompt</figcaption>
-            </center>
+            <p align="center">
+                Git branch on prompt
+            </p>
         </p>
     </details>
     <details>
@@ -125,9 +125,9 @@
             alt="Kubernetes container on prompt"
             width="70%"
             />
-            <center>
-                <figcaption>Kubernetes container on prompt</figcaption>
-            </center>
+            <p align="center">
+                Kubernetes container on prompt
+            </p>
         </p>
     </details>
     <br />
@@ -183,9 +183,9 @@ Examples:
         alt="Example: dding git branch and customizing exit status"
         width="70%"
         />
-        <center>
-            <figcaption>Example: adding git branch and customizing exit status</figcaption>
-        </center>
+        <p align="center">
+            Example: adding git branch and customizing exit status
+        </p>
     </p>
 </details>
 
@@ -203,9 +203,9 @@ Examples:
         alt="Blue dirs"
         width="70%"
         />
-        <center>
-            <figcaption>Blue dirs</figcaption>
-        </center>
+        <p align="center">
+            Blue dirs
+        </p>
     </p>
 </details>
 
@@ -223,9 +223,9 @@ Examples:
         alt="Renamed tabs"
         width="70%"
         />
-        <center>
-            <figcaption>Renamed tabs/win</figcaption>
-        </center>
+        <p align="center">
+            Renamed tabs/win
+        </p>
     </p>
 </details>
 
@@ -244,9 +244,9 @@ Examples:
         alt="SSH prompt"
         width="70%"
         />
-        <center>
-            <figcaption>SSH Prompt</figcaption>
-        </center>
+        <p align="center">
+            SSH prompt
+        </p>
     </p>
 </details>
 
@@ -264,9 +264,9 @@ Examples:
         alt="Improved autocompletion"
         width="70%"
         />
-        <center>
-            <figcaption>Improved autocompletion</figcaption>
-        </center>
+        <p align="center">
+            Improved autocompletion
+        </p>
     </p>
 </details>
 
@@ -285,9 +285,9 @@ Examples:
         alt="Exit status affects prompt"
         width="70%"
         />
-        <center>
-            <figcaption>Exit status affecting prompt</figcaption>
-        </center>
+        <p align="center">
+            Exit status affects prompt
+        </p>
     </p>
 </details>
 
@@ -305,9 +305,9 @@ Examples:
         alt="Custom history"
         width="70%"
         />
-        <center>
-            <figcaption>Custom history</figcaption>
-        </center>
+        <p align="center">
+            Custom history
+        </p>
     </p>
 </details>
 
@@ -340,9 +340,9 @@ MiniPrompt can be downloaded in two different forms:
         alt="GUI Step #1"
         width="60%"
         />
-        <center>
-            <figcaption>Step #1 - Download the .zip (preferibly to /tmp/)</figcaption>
-        </center>
+        <p align="center">
+            Step #1 - Download the .zip (preferibly to /tmp/)
+        </p>
     </p>
     <br />
     <p align="center">
@@ -351,9 +351,9 @@ MiniPrompt can be downloaded in two different forms:
         alt="GUI Step #2"
         width="60%"
         />
-        <center>
-            <figcaption>Step #2 - unzip it</figcaption>
-        </center>
+        <p align="center">
+            Step #2 - unzip
+        </p>
     </p>
     <br />
     <p align="center">
@@ -362,9 +362,9 @@ MiniPrompt can be downloaded in two different forms:
         alt="Step #3"
         width="60%"
         />
-        <center>
-            <figcaption>Step #3 - cut and paste MiniPrompt to /usr/local/bin</figcaption>
-        </center>
+        <p align="center">
+            Step #3 - cut and paste MiniPrompt to /usr/local/bin
+        </p>
     </p>
     <br />
 </details>
