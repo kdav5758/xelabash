@@ -351,28 +351,7 @@ MiniPrompt can be downloaded in two different forms:
 </details>
 
 <details>
-    <summary>Terminal method (recommended)</summary>
-    <br />
-    <div style="text-align: justify">
-        Copy and paste this commands to the terminal.
-    </div>
-
-<p>
-
-```bash
-$ sudo chmod 775 /usr/local/bin
-$ cd /usr/local/bin/
-$ git clone https://github.com/kdav5758/.dotfiles/tree/dev
-$ sudo chmod 775 /usr/local/bin/MiniPrompt/mini_prompt.sh; sudo chmod 775 /usr/local/bin/MiniPrompt/scripts/on_da_fly.sh
-```
-</p>
-    <br />
-</details>
-
-#### Method #2 - Unreleased test
-
-<details>
-    <summary>Manually (recommended)</summary>
+    <summary>Terminal Method (recommended)</summary>
     <br />
     <div style="text-align: justify">
         Copy and paste this commands to the terminal. (remember to replace '<"tag_name">' with the tag name you want to download.)
@@ -388,6 +367,29 @@ $ unzip *.zip
 $ sudo chmod 775 /usr/local/bin
 $ sudo mv /tmp/MiniPrompt* /usr/local/bin/
 $ cd /usr/local/bin/MiniPrompt*
+```
+</p>
+    <br />
+</details>
+
+
+#### Method #2 - Unreleased test
+
+
+<details>
+    <summary>Manually (recommended)</summary>
+    <br />
+    <div style="text-align: justify">
+        Copy and paste this commands to the terminal.
+    </div>
+
+<p>
+
+```bash
+$ sudo chmod 775 /usr/local/bin
+$ cd /usr/local/bin/
+$ git clone https://github.com/kdav5758/.dotfiles/tree/dev
+$ sudo chmod 775 /usr/local/bin/MiniPrompt/mini_prompt.sh; sudo chmod 775 /usr/local/bin/MiniPrompt/scripts/on_da_fly.sh
 ```
 </p>
     <br />
