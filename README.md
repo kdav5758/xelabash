@@ -68,16 +68,14 @@
 **Minimalist Prompt**, a simple yet *feature rich* bash prompt.
 -->
 
-## Table of Contents
+## 🌲 Table of Contents
 
 * [Features](#📋-features)
 * [Installation and Setup](#📦-install-and-setup)
     * [Prerequisites](#prerequisites)
     * [Download](#download)
-        * [Method #1](#method-1)
-        * [Method #2](#method-2)
-            * [Manually](#manually-recommended)
-            * [With install.sh](#with-installsh)
+        * [Method #1 Stable release](#method-1---stable-release-recommended)
+        * [Method #2 Unreleased-Test](#method-2---unreleased-test)
     * [Setup](#setup)
 * [Configuration](#🍉-configuration)
     * [Annotations](#annotations)
@@ -308,38 +306,125 @@ MiniPrompt can be downloaded in two different forms:
     1. Manually
     2. Using the `install.sh` script
 
-#### Method #1
-```bash
-$ git clone
-```
-#### Method #2
-##### Manually (recommended)
+#### Method #1 - Stable release (recommended)
+<details>
+    <summary>GUI Method</summary>
+    <br />
+    <div style="text-align: justify">
+        Simply download the latest tag's .zip file, unzip it, and put it into /usr/local/bin/
+    </div>
+    <br />
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/TkIxrkg.png"
+        alt="GUI Step #1"
+        width="60%"
+        />
+        <center>
+            <figcaption>Step #1 - Download the .zip (preferibly to /tmp/)</figcaption>
+        </center>
+    </p>
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/a6YkJyb.png"
+        alt="GUI Step #2"
+        width="60%"
+        />
+        <center>
+            <figcaption>Step #2 - unzip it</figcaption>
+        </center>
+    </p>
+    <br />
+    <p align="center">
+        <img
+        src="https://i.imgur.com/uz94dfQ.png"
+        alt="Step #3"
+        width="60%"
+        />
+        <center>
+            <figcaption>Step #3 - cut and paste MiniPrompt to /usr/local/bin</figcaption>
+        </center>
+    </p>
+    <br />
+</details>
+
+<details>
+    <summary>Terminal method (recommended)</summary>
+    <br />
+    <div style="text-align: justify">
+        Copy and paste this commands to the terminal.
+    </div>
+
+<p>
+
 ```bash
 $ sudo chmod 775 /usr/local/bin
 $ cd /usr/local/bin/
 $ git clone https://github.com/kdav5758/.dotfiles/tree/dev
 $ sudo chmod 775 /usr/local/bin/MiniPrompt/mini_prompt.sh; sudo chmod 775 /usr/local/bin/MiniPrompt/scripts/on_da_fly.sh
 ```
-##### With `install.sh`
+</p>
+    <br />
+</details>
+
+#### Method #2 - Unreleased test
+
+<details>
+    <summary>Manually (recommended)</summary>
+    <br />
+    <div style="text-align: justify">
+        Copy and paste this commands to the terminal. (remember to replace '<"tag_name">' with the tag name you want to download.)
+    </div>
+    <br />
+
+<p>
+
+```
+$ cd /tmp/
+$ wget https://github.com/kdav5758/MiniPrompt/archive/refs/tags/<tag_name>.zip # e.g. https://github.com/kdav5758/MiniPrompt/archive/refs/tags/v0.1.5.zip
+$ unzip *.zip
+$ sudo chmod 775 /usr/local/bin
+$ sudo mv /tmp/MiniPrompt* /usr/local/bin/
+$ cd /usr/local/bin/MiniPrompt*
+```
+</p>
+    <br />
+</details>
+
+<details>
+    <summary>With the install.sh script</summary>
+    <br />
+    <div style="text-align: justify">
+        Copy and paste this commands to the terminal and let the script do its thing!
+    </div>
+    <br />
+
+<p>
+
 ```bash
-$ wget --output-document=/tmp/install.sh wget https://raw.githubusercontent.com/kdav5758/MiniPrompt/dev/install.sh
+$ wget --output-document=/tmp/install.sh https://github.com/kdav5758/MiniPrompt/blob/dev/scripts/install.sh
 $ sudo chmod 775 /tmp/install.sh
 $ bash /tmp/install.sh
 ```
+</p>
+    <br />
+</details>
 
 ### Setup
-Now that you have MiniPrompt downloaded with the appropriate execution permissions, you'll have to configure it on your .bashrc file, usually located at `$HOME`. You should copy and paste the contents of the [.bashrc file located in the repo](https://github.com/kdav5758/MiniPrompt/blob/dev/.bashrc) to `~/.bashrc` (or wherever it's located at). However, you can also use this commands:
+Now that you have MiniPrompt downloaded with the appropriate execution permissions, you'll have to configure it on your .bashrc file, usually located at `$HOME`. You should copy and paste the contents of the [.bashrc file located in the repo](https://github.com/kdav5758/MiniPrompt/blob/main/scripts/.bashrc) to `~/.bashrc` (or wherever it's located at). However, you can also use this commands:
 
 ```bash
 $ cd /tmp/
-$ wget https://github.com/kdav5758/MiniPrompt/blob/main/install.sh
+$ wget https://raw.githubusercontent.com/kdav5758/MiniPrompt/main/scripts/.bashrc
 $ cat .bashrc >> ~/.bashrc
 ```
 
 (If `~/.bashrc` doesn't work, try `~/.bash_profile`.)
 
 ## 🍉 Configuration
-As it's stated at the top of the README, everything relies on one single file, including the configuration. The configuration is at the top of the [mini_prompt.sh](https://github.com/kdav5758/MiniPrompt/blob/dev/mini_prompt.sh) file and can be twicked from there, by default this is the configuration:
+As it's stated at the top of the README, everything relies on one single file, including the configuration. The configuration is at the top of the [mini_prompt.sh](https://github.com/kdav5758/MiniPrompt/blob/main/mini_prompt.sh) file and can be twicked from there, by default this is the configuration:
 
 ```bash
 # prompt symbols
@@ -377,34 +462,6 @@ The following ones are the projects that inspired the creating of MiniPrompt. If
 - [aelindeman/xelabash](https://github.com/aelindeman/xelabash): Bash prompt with minimal functions.
 - [starship/starship](https://github.com/starship/starship): Customizable cross-shell prompt.
 - [agkozak/polyglot](https://github.com/agkozak/polyglot): ASCII-only cross-shell git prompt.
-
-<!--
-## More pictures
-
-- Full `cwd`
-
-  ![dir](images/dir.png)
-
-- Git status and branch
-
-  ![git](images/git.png)
-
-- Kubernetes context (and namespace, if set)
-
-  ![kube](images/kube.png)
-
-- Last process exit status
-
-  ![exit](images/exit.png)
-
-- Username and hostname, when connected via `ssh`
-
-  ![ssh](images/ssh.png)
-
-- ...and they all work in combination with each other
-
-  ![combo](images/combo.png)
--->
 
 ## 🙋 FAQ
 - Why doesn't it look like in the Demo?
