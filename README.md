@@ -14,7 +14,7 @@
       src="https://img.shields.io/github/repo-size/kdav5758/MiniPrompt"
       alt="GitHub repository size"
   /></a>
-  <a href="https://github.com/kdav5758/MiniPrompt/blob/dev/LICENSE"
+  <a href="https://github.com/kdav5758/MiniPrompt/blob/main/LICENSE"
     ><img
       src="https://img.shields.io/badge/license-GPL-blue"
       alt="GPL License"
@@ -53,7 +53,7 @@
 
 <div style="text-align: justify">
 
-**Minimalist Prompt**, a simple and lightning fast, yet, *feature rich*, bash prompt
+**Minimalist Prompt**, a simple and lightning fast, yet, *feature rich*, bash prompt!
 
 - **Fast:** uses bash scripting language, making it *hella* fast!
 - **Customizable:** all the variables are in a single file.
@@ -304,7 +304,7 @@ Examples:
 ### Download
 MiniPrompt can be downloaded in two different forms:
 1. Stable: Going to the [realses page](https://github.com/kdav5758/MiniPrompt/releases) of the repository and downloading the .zip file.
-2. Testing: Cloning the repository.
+2. Testing: Cloning the repository from the `dev` branch to get latest and yet to be released features.
     1. Manually
     2. Using the `install.sh` script
 
@@ -332,7 +332,7 @@ Now that you have MiniPrompt downloaded with the appropriate execution permissio
 
 ```bash
 $ cd /tmp/
-$ wget https://raw.githubusercontent.com/kdav5758/MiniPrompt/dev/scripts/.bashrc
+$ wget https://github.com/kdav5758/MiniPrompt/blob/main/install.sh
 $ cat .bashrc >> ~/.bashrc
 ```
 
