@@ -82,6 +82,7 @@
 * [Configuration](#🍉-configuration)
     * [Annotations](#annotations)
 * [Inspirations](#☁%EF%B8%8F-inspirations)
+* [FAQ](#🙋-faq)
 * [Reporting Issues](#⚠%EF%B8%8F-reporting-issues)
 
 ## 📋 Features
@@ -331,7 +332,7 @@ Now that you have MiniPrompt downloaded with the appropriate execution permissio
 
 ```bash
 $ cd /tmp/
-$ wget https://raw.githubusercontent.com/kdav5758/MiniPrompt/dev/.bashrc
+$ wget https://raw.githubusercontent.com/kdav5758/MiniPrompt/dev/scripts/.bashrc
 $ cat .bashrc >> ~/.bashrc
 ```
 
@@ -404,5 +405,23 @@ The following ones are the projects that inspired the creating of MiniPrompt. If
 
   ![combo](images/combo.png)
 -->
+
+## 🙋 FAQ
+- Why doesn't it look like in the Demo?
+
+There two possible explanations for this:
+1. You changed the `$usr_prompt` variable to something else, casuing a different look in the prompt
+2. In the demo, the [Kitty terminal](https://github.com/kovidgoyal/kitty) with a custom theme inspired by the [Espresso theme](https://github.com/dexpota/kitty-themes#espresso) provided at the Kitty [Themes repository](https://github.com/dexpota/kitty-themes)
+
+- Why can't I copy the files to `/usr/local/bin`?
+
+By default, you aren't allowed to place files here, so you must give yourself permissions:
+
+```bash
+$ sudo chmod 775 /usr/local/bin/
+```
+
+If this fails, try with `/usr/bin/`, BUT be careful, because here are stored most of your programs' binaries
+
 ## ⚠️ Reporting Issues
 Issues are used to track todos, bugs, feature requests, and more, in this case this project has no special way for making issues, thus you can simply go to the [Issues section](https://github.com/kdav5758/MiniPrompt/issues).

@@ -4,7 +4,7 @@
 
 #-------------------=== aliases ===-------------------------------
 alias start_mp='source /usr/local/bin/MiniPrompt/mini_prompt.sh'
-alias odf='source /usr/local/bin/MiniPrompt/on_da_fly.sh'
+alias odf='source /usr/local/bin/MiniPrompt/scripts/on_da_fly.sh'
 
 #-------------------=== vars ===-------------------------------
 MINIPROMPT_ENABLED=true
