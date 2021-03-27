@@ -45,35 +45,53 @@
 </p>
 
 <img
-  src="https://raw.githubusercontent.com/starship/starship/master/media/demo.gif"
-  alt="Starship with iTerm2 and the Snazzy theme"
+  src="https://i.imgur.com/0MOao4K.gif"
+  alt="MiniPrompt with Kitty Terminal and a custom theme"
   width="50%"
   align="right"
 />
 
 **Minimalist Prompt**, a simple and lightning fast, yet, *feature rich*, bash prompt
 
-- **Fast:** it's fast – _really really_ fast! 🚀
-- **Customizable:** configure every aspect of your prompt.
-- **Universal:** works on any shell, on any operating system.
-- **Intelligent:** shows relevant information at a glance.
-- **Feature rich:** support for all your favorite tools.
-- **Easy:** quick to install – start using it in minutes.
+- **Fast:** uses bash scripting language, making it *hella* fast!
+- **Customizable:** all the variables are in a single file.
+- **Feature rich:** regardless of being a "bare bones prompt", has everything that's needed.
+- **Easy:** quick installation and configuration.
+- **Organized:** everything is and depends on one file.
 
 <!--
 ![xelabash](images/base.png)
 **Minimalist Prompt**, a simple yet *feature rich* bash prompt.
 -->
 
-## Features
+## Table of Contents
 
-- Compact, minimalist, single-line prompt, featuring:
-  - Red `$` (or `#`, if root) in prompt following an error
-  - `user@hostname`, but only when in a remote session
-  - Git branch and working copy dirty status, when in a Git repo
-  - Active Kubernetes context and namespace
-- "Better"-than-default autocomplete settings
-- Not overly opinionated; designed to integrate with other settings and tools if desired
+* [Features](#📋-features)
+  * [Home](#home)
+
+
+## 📋 Features
+
+- Supports *extensions*
+  - Display Git branch when in a Git repo
+  - Display Kubernetes context and namespace
+- Changes color/symbol according to last command's exit status
+- Changes prompt while being connected through **ssh**
+- Improves bash's default autocompletion
+- Modifies `history` in order to show more information
+- Comes with `odf.sh` (On Da Fly), which allows you to customize the prompt *on the fly*
+- Changes Directory colors!
+
+<details>
+    <summary>Modifies `history` in order to show more information</summary>
+    What this does it that it appends a formatted version of the date and the time at which *x* command was executed.
+    <img
+        src="https://i.imgur.com/4n8vnh1.gif"
+        alt="Custom history"
+        width="50%"
+        align="right"
+    />
+</details>
 
 ## Install and Setup
 
