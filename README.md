@@ -37,11 +37,11 @@
 </p>
 
 <p align="center">
-  <a href="#features">Features</a>
+  <a href="#-features">Features</a>
   ·
-  <a href="#🍉-configuration">Configuration</a>
+  <a href="#-configuration">Configuration</a>
   ·
-  <a href="#📦-install-and-setup">Installation</a>
+  <a href="#-install-and-setup">Installation</a>
 </p>
 
 <img
@@ -70,17 +70,17 @@
 
 ## 🌲 Table of Contents
 
-* [Features](#📋-features)
-* [Installation and Setup](#📦-install-and-setup)
+* [Features](#-features)
+* [Installation and Setup](#-install-and-setup)
     * [Prerequisites](#prerequisites)
     * [Download](#download)
         * [Method #1 Stable release](#method-1---stable-release-recommended)
         * [Method #2 Unreleased-Test](#method-2---unreleased-test)
     * [Setup](#setup)
-* [Configuration](#🍉-configuration)
+* [Configuration](#-configuration)
     * [Annotations](#annotations)
 * [Inspirations](#☁%EF%B8%8F-inspirations)
-* [FAQ](#🙋-faq)
+* [FAQ](#-faq)
 * [Reporting Issues](#⚠%EF%B8%8F-reporting-issues)
 
 ## 📋 Features
