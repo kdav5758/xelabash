@@ -11,6 +11,9 @@
 
 # MiniPrompt, a lighting fast, yet, feature rich bash shell prompt!
 
+# NAME:  MiniPrompt
+# VER:   v0.1.7-alpha
+# PLAT:  linux-64, MacOS (w/ bash)
 
 #-------------------=== Prompt Config ===-------------------------------
 
