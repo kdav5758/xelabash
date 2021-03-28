@@ -504,7 +504,7 @@ The following ones are the projects that inspired the creating of MiniPrompt. If
 
 There two possible explanations for this:
 1. You changed the `$usr_prompt` variable to something else, causing a different look in the prompt.
-2. In the demo, the [Kitty terminal](https://github.com/kovidgoyal/kitty) with a custom theme inspired by the [Espresso theme](https://github.com/dexpota/kitty-themes#espresso) provided at the Kitty [Themes repository](https://github.com/dexpota/kitty-themes).
+2. In the demo, the [Kitty terminal](https://github.com/kovidgoyal/kitty) was used with a custom theme inspired by the [Espresso theme](https://github.com/dexpota/kitty-themes#espresso) provided at the [Kitty Themes repository](https://github.com/dexpota/kitty-themes).
 
 - ***Why can't I copy the files to `/usr/local/bin`?***
 
