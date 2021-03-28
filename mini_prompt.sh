@@ -9,7 +9,7 @@
 #                                            | |
 #                                            |_|
 
-# MiniPrompt, a lighting fast, yet, feature rich bash shell prompt!
+# Minimalist Prompt, a decluttered and lightning fast, yet, feature rich, bash prompt!
 
 # NAME:  MiniPrompt
 # VER:   v0.1.7-alpha

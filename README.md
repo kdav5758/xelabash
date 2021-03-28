@@ -64,7 +64,7 @@
 
 <div style="text-align: justify">
 
-**Minimalist Prompt**, a simple and lightning fast, yet, *feature rich*, bash prompt!
+**Minimalist Prompt**, a decluttered and lightning fast, yet, *feature rich*, bash prompt!
 
 - **Fast:** uses bash scripting language, making it *hella* fast!
 - **Customizable:** all the variables are in a single file.
