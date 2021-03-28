@@ -27,11 +27,10 @@ kube_icon=""
 reset="\[\e[m\]"
 this="$(basename "${BASH_SOURCE[0]}")"
 skip_init=false
-# usr_content="\w"
 usr_content="[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]"
 
 # main functionalities
-ssh_prompt=true
+ssh_prompt=false
 my_bin=false
 add_exit=true
 

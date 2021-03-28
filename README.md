@@ -59,6 +59,7 @@
   alt="MiniPrompt with Kitty Terminal and a custom theme"
   width="55%"
   align="right"
+  style="border-radius:2%"
 />
 
 <div style="text-align: justify">
@@ -335,6 +336,8 @@ MiniPrompt can be downloaded in two different forms:
     1. Manually
     2. Using the `install.sh` script
 
+---
+
 #### Method #1 - Stable release (recommended)
 <details>
     <summary>GUI Method</summary>
@@ -443,6 +446,8 @@ $ bash /tmp/install.sh
     <br />
 </details>
 
+---
+
 ### Setup
 Now that you have MiniPrompt downloaded with the appropriate execution permissions, you'll have to configure it on your .bashrc file, usually located at `$HOME`. You should copy and paste the contents of the [.bashrc file located in the repo](https://github.com/kdav5758/MiniPrompt/blob/main/scripts/.bashrc) to `~/.bashrc` (or wherever it's located at). However, you can also use this commands:
 
@@ -461,18 +466,17 @@ As it's stated at the top of the README, everything relies on one single file, i
 # prompt symbols
 success_symbol="λ"
 error_symbol="✗"
-git_branch_icon=""     # requires a patched Nerd Font
-kube_icon=""           # reguires a patched Nerd Font
+git_branch_icon=""
+kube_icon=""
 
 # other
 reset="\[\e[m\]"
 this="$(basename "${BASH_SOURCE[0]}")"
 skip_init=false
-# usr_content="\w"
 usr_content="[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]"
 
 # main functionalities
-ssh_prompt=true
+ssh_prompt=false
 my_bin=false
 add_exit=true
 
@@ -529,3 +533,5 @@ unset color_prompt force_color_prompt
 
 ## ⚠️ Reporting Issues
 Issues are used to track todos, bugs, feature requests, and more, in this case this project has no special way for making issues, thus you can simply go to the [Issues section](https://github.com/kdav5758/MiniPrompt/issues).
+
+
