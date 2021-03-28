@@ -26,7 +26,8 @@ Usage:
 Arguments:
     ex, exe,extensions,extensions_main              Modify 'extensions_main' var
     gp, git,git_prompt,GIT_PROMPT                   Modify 'GIT_PROMPT' var
-    kb, kube,kubernetes_prompt,KUBE_PROMPT          Modify 'KUBE_PROMPT' var
+    kp, kube,kubernetes_prompt,KUBE_PROMPT          Modify 'KUBE_PROMPT' var
+    sp, ssh,ssh_prompt,SSH_PROMPT                   Modify 'SSH_PROMPT' var
     mb, b,my_bin,MY_BIN                             Modify 'MY_BIN' var
     ae, add_exit,ADD_EXIT                           Modify 'add_exit' var
     si, skip_init,SKIP_INIT                         Modify 'skip_init' var
@@ -73,7 +74,7 @@ if [[ -n "$1" ]]; then
             boolean_toggle $toggle
             export GIT_PROMPT=$toggle
             ;;
-        "kb"|"kube"|"kubernetes_prompt"|"KUBE_PROMPT")
+        "kp"|"kube"|"kubernetes_prompt"|"KUBE_PROMPT")
             toggle=$2
             boolean_toggle $toggle
             export KUBE_PROMPT=$toggle
@@ -81,7 +82,7 @@ if [[ -n "$1" ]]; then
         "sp"|"ssh"|"ssh_prompt"|"SSH_PROMPT")
             toggle=$2
             boolean_toggle $toggle
-            export ssh_prompt=$toggle
+            export SSH_PROMPT=$toggle
             ;;
         "mb"|"b"|"my_bin"|"MY_BIN")
             toggle=$2

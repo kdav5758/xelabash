@@ -123,6 +123,25 @@
         </p>
     </details>
     <details>
+        <summary>Changes prompt while being connected through ssh</summary>
+        <br />
+        <div style="text-align: justify">
+            It simply changes the prompt according to whether the user is ssh-ing into somewhere.
+        </div>
+        <br />
+        <br />
+        <p align="center">
+            <img
+            src="https://i.imgur.com/JVcfDbu.gif"
+            alt="SSH prompt"
+            width="70%"
+            />
+            <p align="center">
+                SSH prompt
+            </p>
+        </p>
+    </details>
+    <details>
         <summary>Current Kubernetes container</summary>
         <br />
         <div style="text-align: justify">
@@ -160,12 +179,13 @@ This script simplifies the process of changing MiniPrompt's configuration variab
 on the fly for the current terminal session
 
 Usage:
-    #0: bash [arg] <modifier(s)>
-    #1: bash [flag]
+    #0: ${this_scrpt} [arg] <modifier(s)>
+    #1: ${this_scrpt} [flag]
 Arguments:
     ex, exe,extensions,extensions_main              Modify 'extensions_main' var
     gp, git,git_prompt,GIT_PROMPT                   Modify 'GIT_PROMPT' var
-    kb, kube,kubernetes_prompt,KUBE_PROMPT          Modify 'KUBE_PROMPT' var
+    kp, kube,kubernetes_prompt,KUBE_PROMPT          Modify 'KUBE_PROMPT' var
+    sp, ssh,ssh_prompt,SSH_PROMPT                   Modify 'SSH_PROMPT' var
     mb, b,my_bin,MY_BIN                             Modify 'MY_BIN' var
     ae, add_exit,ADD_EXIT                           Modify 'add_exit' var
     si, skip_init,SKIP_INIT                         Modify 'skip_init' var
@@ -177,11 +197,11 @@ Flags:
     -d, -dis,-disable,-DISABLE                      Disable MiniPrompt
 
 Examples:
-    #0: bash gp t
+    #0: $this_scrpt gp t
         Explanation: This will export the 'GIT_PROMPT' variable as true (enables it to show branch on prompt)
-    #1: bash ex f
+    #1: $this_scrpt ex f
         Explanation: This will export the 'extensions_main' variable as false (disables all extensions)
-    #2: bash ae t
+    #2: $this_scrpt ae t
         Explanation: This will export the 'add_exit' variable as true (enables exit status to be shown on prompt)
 
 ```
@@ -236,27 +256,6 @@ Examples:
         />
         <p align="center">
             Renamed tabs/win
-        </p>
-    </p>
-</details>
-
-
-<details>
-    <summary>Changes prompt while being connected through ssh</summary>
-    <br />
-    <div style="text-align: justify">
-        It simply changes the prompt according to whether the user is ssh-ing into somewhere.
-    </div>
-    <br />
-    <br />
-    <p align="center">
-        <img
-        src="https://i.imgur.com/JVcfDbu.gif"
-        alt="SSH prompt"
-        width="70%"
-        />
-        <p align="center">
-            SSH prompt
         </p>
     </p>
 </details>
@@ -335,8 +334,6 @@ MiniPrompt can be downloaded in two different forms:
 2. Testing: Cloning the repository from the `dev` branch to get latest and yet to be released features.
     1. Manually
     2. Using the `install.sh` script
-
----
 
 #### Method #1 - Stable release (recommended)
 <details>
@@ -476,15 +473,19 @@ skip_init=false
 usr_content="[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]"
 
 # main functionalities
-ssh_prompt=false
-my_bin=false
 add_exit=true
+my_bin=false
 
 # extensions
 extensions_main=false
 GIT_PROMPT=true
+SSH_PROMPT=false
 KUBE_PROMPT=false
 ```
+
+As you can see, by default everything but `add_exit` is turned off. The idea behind this is that the user should only use what is needed relative to the current session ([refer to the on_da_fly.sh feature](#-features)).
+
+---
 
 ### Annotations
 - If `$extensions_main` is set to false, it won't even check if the other extensions (e.g. `$GIT_PROMPT`) are set to true, this is so that the prompt can be `lightning fast`!
@@ -499,13 +500,13 @@ The following ones are the projects that inspired the creating of MiniPrompt. If
 - [agkozak/polyglot](https://github.com/agkozak/polyglot): ASCII-only cross-shell git prompt.
 
 ## 🙋 FAQ
-- Why doesn't it look like in the Demo?
+- ***Why doesn't it look like in the [Demo](https://i.imgur.com/0MOao4K.gif)?***
 
 There two possible explanations for this:
 1. You changed the `$usr_prompt` variable to something else, causing a different look in the prompt.
 2. In the demo, the [Kitty terminal](https://github.com/kovidgoyal/kitty) with a custom theme inspired by the [Espresso theme](https://github.com/dexpota/kitty-themes#espresso) provided at the Kitty [Themes repository](https://github.com/dexpota/kitty-themes).
 
-- Why can't I copy the files to `/usr/local/bin`?
+- ***Why can't I copy the files to `/usr/local/bin`?***
 
 By default, you aren't allowed to place files here, so you must give yourself permissions:
 
@@ -513,9 +514,9 @@ By default, you aren't allowed to place files here, so you must give yourself pe
 $ sudo chmod 775 /usr/local/bin/
 ```
 
-If this fails, try with `/usr/bin/`, BUT be careful, because here are stored most of your programs' binaries
+If this fails, try with `/usr/bin/`, **BUT be careful**, because here are stored most of your programs' binaries.
 
-- Can I make it even faster?
+- ***Can I make it even faster?***
 
 HELL YEAH! There are some simple things you can do:
 

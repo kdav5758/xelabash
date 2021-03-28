@@ -30,13 +30,13 @@ skip_init=false
 usr_content="[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]"
 
 # main functionalities
-ssh_prompt=false
-my_bin=false
 add_exit=true
+my_bin=false
 
 # extensions
 extensions_main=false
 GIT_PROMPT=true
+SSH_PROMPT=false
 KUBE_PROMPT=false
 
 #-------------------=== Prompt Config ===-------------------------------
@@ -109,11 +109,11 @@ gray="\[\e[0;37m\]"
 # white_text_over_yellow="\[\033[01;43m\]"
 
 #-------------------=== Annotations ===-------------------------------
-# * `command -v <cmd>` is faster thatn `which <cmd>`, so keet it
+# * `command -v <cmd>` is faster thatn `which <cmd>`, so keep it
 
 #-------------------=== Configuration Funcs ===-------------------------------
 
-
+# configures autocompletion
 function config_autocomplete() {
     bind 'set colored-stats on'
     bind 'set colored-completion-prefix on'
@@ -130,6 +130,7 @@ function config_autocomplete() {
     shopt -s 'dirspell'
 }
 
+# configure colors for the directories
 function config_dircolors() {
     if [ -x "$(command -v dircolors)" ]; then
         if [ -r "$HOME/.dircolors" ]; then
@@ -140,19 +141,14 @@ function config_dircolors() {
     fi
 }
 
+# configure history's format to: <num>  [yyyy-mm-dd 00:00:00] <cmd>
 function config_history_format() {
     export HISTCONTROL='ignoreboth:erasedups'
     export HISTTIMEFORMAT='[%Y-%m-%d %T] '
     shopt -s 'histappend'
 }
 
-function config_extensions() {
-    export bin_git
-    export bin_kubectl
-    bin_git="$(command -v git)"
-    bin_kubectl="$(command -v kubectl)"
-}
-
+# configure local MiniPrompt's bin
 function config_my_bin() {
     if [[ "$my_bin" == "false" ]]; then
         :
@@ -162,16 +158,16 @@ function config_my_bin() {
         done
 
         for config in "$HOME/.profile" "$HOME/.bash_aliases"; do
-        if [ -f "$config" ]; then
-          source "$config"
-        fi
+            if [ -f "$config" ]; then
+              source "$config"
+            fi
         done
     else
         echo -e "Variable 'my_bin' was set to '$my_bin', which is not a valid value. It can only be set to 'true' or 'false' in $this located at `miniprompt_path`."
     fi
 }
 
-# config funcs 'main'
+# config func's 'main'
 function configure_miniprompt() {
 
     export PS1_previous_exit
@@ -186,12 +182,10 @@ function configure_miniprompt() {
     config_my_bin
 }
 
-
+# stablish path to the prompt
 function miniprompt_path() {
     echo "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)/$(basename "${BASH_SOURCE[0]}")"
 }
-
-
 
 # prepares the prompt variables
 function reset_prompt() {
@@ -219,6 +213,19 @@ function add_exit_code_to_prompt() {
     fi
 }
 
+#-------------------=== Extensions ===-------------------------------
+
+# find and export each exten' executable
+function config_extensions() {
+    export bin_git
+    export bin_kubectl
+    export bin_ssh
+    bin_git="$(command -v git)"
+    bin_ssh="$(command -v ssh)"
+    bin_kubectl="$(command -v kubectl)"
+}
+
+# display git branch of current repo, if located at one
 function add_git_to_prompt() {
     if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ]]; then
         # local branch=`git branch --show-current`
@@ -237,23 +244,17 @@ function add_kube_to_prompt() {
     PS1_content="${PS1_content:-} ${kube_icon}\[\e[34m\]${context}${namespace:+:$namespace}\[\e[0m\]"
 }
 
-
-# prepend user@hostname to prompt, if connected via ssh
+# display user@hostname to prompt, if connected via ssh
 function add_ssh_to_prompt() {
-    if [[ "$ssh_prompt" == "true" ]]; then
-        if [[ -n "$SSH_CONNECTION" ]]; then
-            PS1_prefix='\[\e]0;\u@\h \w\a\]'
-            PS1_content="\[\e[2m\]\u@\h\[\e[0m\] ${PS1_content}"
-        else
-            :
-        fi
-    elif [[ "$ssh_prompt" == "false" ]]; then
-        :
+    if [[ -n "$SSH_CONNECTION" ]]; then
+        PS1_prefix="\[\e]0;\u@\h \w\a\]"
+        PS1_content="\[\e[2m\]\u@\h\[\e[0m\] ${PS1_content}"
     else
-        echo -e "Configuration variable 'ssh_prompt' was set to '$ssh_prompt', which is not a valid value. It can either be set to 'true' or 'false' in $this located at `miniprompt_path`, otherwise you'll see this message"
+        :
     fi
 }
 
+# test if the extension is enabled of not
 function test_extension() {
     extension_name=$1
     extension_boolean=$2
@@ -275,13 +276,13 @@ function main_prompt() {
     # chage prompt accordingly
     reset_prompt
     add_exit_code_to_prompt
-    add_ssh_to_prompt
 
     # test extensions
     if [[ "$extensions_main" == "false" ]]; then
         :
     elif [[ "$extensions_main" == "true" ]]; then
         test_extension "Git Branch" $GIT_PROMPT $bin_git "add_git_to_prompt"
+        test_extension "SSH Prompt" $SSH_PROMPT $bin_ssh "add_ssh_to_prompt"
         test_extension "Kubernetes Container" $KUBE_PROMPT $bin_kubectl "add_kube_to_prompt"
     else
         echo -e "Configuration variable 'extensions_main' was set to '$extensions_main', which is not a valid value. It can either be set to 'true' or 'false' in $this located at `miniprompt_path`, otherwise you'll see this message"
@@ -289,8 +290,7 @@ function main_prompt() {
 
     # finally!
     export PS1="${PS1_prefix:-}${PS1_content:-}${PS1_suffix:-}"
-    history -a
-    clean_variables
+    history -a; clean_variables
 }
 
 # clean up (unset) shared mini_prompt variables (e.g. prefix and suffix)
@@ -311,6 +311,7 @@ function __init() {
     fi
 }
 
+# initialization
 if [[ "$skip_init" == "false" ]]; then
     __init
 elif [[ "$skip_init" == "true" ]]; then
