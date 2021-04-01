@@ -4,7 +4,7 @@
 # =============================================================================
 
 #-------------------=== aliases ===-------------------------------
-alias start_mp='source /usr/local/bin/MiniPrompt*/mini_prompt.sh'
+alias start_mp='source /usr/local/bin/MiniPrompt*/mini_prompt'
 alias odf='source /usr/local/bin/MiniPrompt*/scripts/on_da_fly.sh'
 
 #-------------------=== vars ===-------------------------------
@@ -19,7 +19,7 @@ if [[ "$MINIPROMPT_ENABLED" == "true" ]]; then
     # check if current shell is interactive
     # if .bashrc doesn't do this by default, uncomment the line below and comment the line that only says source /usr/local/bin/MiniPrompt*/mini_prompt.sh
     # [[ $- == *i* ]] && source /usr/local/bin/MiniPrompt*/mini_prompt.sh || echo -e "You are currently not in an interactive shell, thus MiniPrompt can't load"
-    source /usr/local/bin/MiniPrompt*/mini_prompt.sh
+    source /usr/local/bin/MiniPrompt*/mini_prompt
     source /usr/local/bin/MiniPrompt*/scripts/extras.sh
 elif [[ "$MINIPROMPT_ENABLED" == "false" ]]; then
     # don't source it
