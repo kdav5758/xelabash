@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ODF stands for "On Da Fly" (yes, this was on purpose becuase OTF for "On The Fly" already stands for a file format for fonts)
+# ODF stands for "On Da Fly" (yes, this was on purpose since OTF for "On The Fly" already stands for a font file format)
 
 # skip_init=false
 
@@ -25,10 +25,12 @@ Usage:
     #1: ${this_scrpt} [flag]
 Arguments:
     ex, exe,extensions,extensions_main              Modify 'extensions_main' var
+    et, extr,extr,extras,extras_enabled             Modify 'extras_enabled' var
+    hi, hist,history,history_enabled                Modify 'history_enabled' var
+    dc, dirc,dircolors,dircolors_enabled            Modify 'dircolors_enabled' var
     gp, git,git_prompt,GIT_PROMPT                   Modify 'GIT_PROMPT' var
     kp, kube,kubernetes_prompt,KUBE_PROMPT          Modify 'KUBE_PROMPT' var
     sp, ssh,ssh_prompt,SSH_PROMPT                   Modify 'SSH_PROMPT' var
-    mb, b,my_bin,MY_BIN                             Modify 'MY_BIN' var
     ae, add_exit,ADD_EXIT                           Modify 'add_exit' var
     si, skip_init,SKIP_INIT                         Modify 'skip_init' var
 Modifiers: (only for arguments)
@@ -69,6 +71,21 @@ if [[ -n "$1" ]]; then
             boolean_toggle $toggle
             export extensions_main=$toggle
             ;;
+        "et"|"extr"|"extras"|"extras_enabled")
+            toggle=$2
+            boolean_toggle $toggle
+            export extras_enabled=$toggle
+            ;;
+        "hi"|"hist"|"history"|"history_enabled")
+            toggle=$2
+            boolean_toggle $toggle
+            export history_enabled=$toggle
+            ;;
+        "dc"|"dirc"|"dircolors"|"dircolors_enabled")
+            toggle=$2
+            boolean_toggle $toggle
+            export dircolors_enabled=$toggle
+            ;;
         "gp"|"git"|"git_prompt"|"GIT_PROMPT")
             toggle=$2
             boolean_toggle $toggle
@@ -83,11 +100,6 @@ if [[ -n "$1" ]]; then
             toggle=$2
             boolean_toggle $toggle
             export SSH_PROMPT=$toggle
-            ;;
-        "mb"|"b"|"my_bin"|"MY_BIN")
-            toggle=$2
-            boolean_toggle $toggle
-            export my_bin=$toggle
             ;;
         "ae"|"add_exit"|"ADD_EXIT")
             toggle=$2

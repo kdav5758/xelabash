@@ -181,10 +181,12 @@ Usage:
     #1: ${this_scrpt} [flag]
 Arguments:
     ex, exe,extensions,extensions_main              Modify 'extensions_main' var
+    et, extr,extr,extras,extras_enabled             Modify 'extras_enabled' var
+    hi, hist,history,history_enabled                Modify 'history_enabled' var
+    dc, dirc,dircolors,dircolors_enabled            Modify 'dircolors_enabled' var
     gp, git,git_prompt,GIT_PROMPT                   Modify 'GIT_PROMPT' var
     kp, kube,kubernetes_prompt,KUBE_PROMPT          Modify 'KUBE_PROMPT' var
     sp, ssh,ssh_prompt,SSH_PROMPT                   Modify 'SSH_PROMPT' var
-    mb, b,my_bin,MY_BIN                             Modify 'MY_BIN' var
     ae, add_exit,ADD_EXIT                           Modify 'add_exit' var
     si, skip_init,SKIP_INIT                         Modify 'skip_init' var
 Modifiers: (only for arguments)
@@ -335,7 +337,7 @@ MiniPrompt can be downloaded in two different forms:
 
 #### Method #1 - Stable release (recommended)
 <details>
-    <summary>GUI Method</summary>
+    <summary>GUI Method (recommended)</summary>
     <br />
     <div style="text-align: justify">
         Simply download the latest tag's .zip file, unzip it, and put it into /usr/local/bin/
@@ -378,7 +380,7 @@ MiniPrompt can be downloaded in two different forms:
 </details>
 
 <details>
-    <summary>Terminal Method (recommended)</summary>
+    <summary>Terminal Method</summary>
     <br />
     <div style="text-align: justify">
         Copy and paste this commands to the terminal. (remember to replace '<"tag_name">' with the tag name you want to download.)
@@ -444,7 +446,7 @@ $ bash /tmp/install.sh
 ---
 
 ### Setup
-Now that you have MiniPrompt downloaded with the appropriate execution permissions, you'll have to configure it on your .bashrc file, usually located at `$HOME`. You should copy and paste the contents of the [.bashrc file located in the repo](https://github.com/kdav5758/MiniPrompt/blob/main/scripts/.bashrc) to `~/.bashrc` (or wherever it's located at). However, you can also use this commands:
+Now that you have MiniPrompt downloaded with the appropriate execution permissions, you'll have to configure it on your `.bashrc` file, usually located at `$HOME`. You should copy and paste the contents of the [.bashrc file located in the repo](https://github.com/kdav5758/MiniPrompt/blob/main/scripts/.bashrc) to `~/.bashrc` (or wherever it's located at). However, you can also use this commands:
 
 ```bash
 $ cd /tmp/
@@ -455,7 +457,11 @@ $ cat .bashrc >> ~/.bashrc
 (If `~/.bashrc` doesn't work, try `~/.bash_profile`.)
 
 ## 🍉 Configuration
-As it's stated at the top of the README, everything relies on one single file, including the configuration. The configuration is at the top of the [mini_prompt.sh](https://github.com/kdav5758/MiniPrompt/blob/main/mini_prompt.sh) file and can be twicked from there, by default this is the configuration:
+The configuration is splitted into two parts:
+1. At the top of [mini_prompt.sh](https://github.com/kdav5758/MiniPrompt/blob/main/mini_prompt.sh)
+2. At the top of [extras.sh](https://github.com/kdav5758/MiniPrompt/blob/main/scripts/extras.sh)
+
+On the first hand, `mini_prompt.sh` contains the "main" configuration such as prompt's symbols, main methods, extensions, etc. These are are the defaults:
 
 ```bash
 # prompt symbols
@@ -472,7 +478,13 @@ usr_content="[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]"
 
 # main functionalities
 add_exit=true
-my_bin=false
+
+# extras
+# extras are configured from `/usr/local/bin/scripts/extras.sh`
+# they can all be enabled or disabled with this variable
+export extras_enabled=true
+# history
+# dir colors
 
 # extensions
 extensions_main=false
@@ -481,15 +493,24 @@ SSH_PROMPT=false
 KUBE_PROMPT=false
 ```
 
-As you can see, by default everything but `add_exit` is turned off. The idea behind this is that the user should only use what is needed relative to the current session ([refer to the on_da_fly.sh feature](#-features)).
+On the other hand, `extras.sh` contains the "secondary" configuration regarding stuff that is normally "out of the scope" of what a normal prompt should do, in this case, modifying both the history and the directory's colors. These are the defaults:
+
+```bash
+this="$(basename "${BASH_SOURCE[0]}")"
+history_enabled=true
+dircolors_enabled=true
+```
+
+As you can see, by default everything but `add_exit` and `extras` are turned off. The idea behind this is that the user should only use what is needed relative to the current session ([refer to the on_da_fly.sh feature](#-features)).
 
 ---
 
 ### Annotations
 - If `$extensions_main` is set to false, it won't even check if the other extensions (e.g. `$GIT_PROMPT`) are set to true, this is so that the prompt can be `lightning fast`!
-- `$usr_content` is where you will specify the contents of the prompt
+- `$usr_content` is where you will specify the contents of the prompt.
 - Below `#prompt symbols` you will find the symbols that the prompt takes according to the current event.
-- If `$prompt_init` is set to false, MiniPrompt won't start.
+- If `$prompt_init` is set to false, MiniPrompt won't be initialized.
+- If `$extras_enabled` is set to false, the `extras.sh` file won't be initialized.
 
 ## ☁️ Inspirations
 The following ones are the projects that inspired the creating of MiniPrompt. If possible go check them out to see why they are so amazing ;)

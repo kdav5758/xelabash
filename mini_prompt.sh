@@ -15,7 +15,7 @@
 # VER:   v0.2.1-beta
 # PLAT:  linux-64, MacOS (w/ bash)
 
-#-------------------=== Prompt Config ===-------------------------------
+#-------------------=== Prompt Config ===------------------------------->>>
 
 # prompt symbols
 success_symbol="λ"
@@ -31,7 +31,13 @@ usr_content="[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]"
 
 # main functionalities
 add_exit=true
-my_bin=false
+
+# extras
+# extras are configured from `/usr/local/bin/scripts/extras.sh`
+# they can all be enabled or disabled with this variable
+export extras_enabled=true
+# history
+# dir colors
 
 # extensions
 extensions_main=false
@@ -39,41 +45,7 @@ GIT_PROMPT=true
 SSH_PROMPT=false
 KUBE_PROMPT=false
 
-#-------------------=== Prompt Config ===-------------------------------
-
-script_help=$( cat << EOF
-
-This script simplifies the process of changing MiniPrompt's configuration variables
-on the fly for the current terminal session
-
-Usage:
-    #0: ${this} [arg] <modifier(s)>
-    #1: ${this} [flag]
-Arguments:
-    ex, exe,extensions,extensions_main              Modify 'extensions_main' var
-    gp, git,git_prompt,GIT_PROMPT                   Modify 'GIT_PROMPT' var
-    kb, kube,kubernetes_prompt,KUBE_PROMPT          Modify 'KUBE_PROMPT' var
-    mb, b,my_bin,MY_BIN                             Modify 'MY_BIN' var
-    ae, add_exit,ADD_EXIT                           Modify 'add_exit' var
-    si, skip_init,SKIP_INIT                         Modify 'skip_init' var
-Modifiers: (only for arguments)
-    f/false/FALSE                                   Disables [arg]
-    t/true/TRUE                                     Enables [arg]
-Flags:
-    -h,--help                                       See this help message.
-    -d, -dis,-disable,-DISABLE                      Disable MiniPrompt
-
-Examples:
-    #0: $this gp t
-        Explanation: This will export the 'GIT_PROMPT' variable as true (enables it to show branch on prompt)
-    #1: $this ex f
-        Explanation: This will export the 'extensions_main' variable as false (disables all extensions)
-    #2: $this ae t
-        Explanation: This will export the 'add_exit' variable as true (enables exit status to be shown on prompt)
-
-EOF
-)
-
+#-------------------=== Prompt Config ===-------------------------------<<<
 
 #-------------------=== Colors ===-------------------------------
 # main
@@ -83,6 +55,7 @@ yellow="\[\e[0;33m\]"
 gray="\[\e[0;37m\]"
 
 # secondary
+# uncomment as many as you need
 # \[\033[<num_for_syle>;<num_for_color>m\] = color
 # e.g: \[\033[02;32m\] = green text in italics
 # \[\033[00m\]
@@ -130,43 +103,6 @@ function config_autocomplete() {
     shopt -s 'dirspell'
 }
 
-# configure colors for the directories
-function config_dircolors() {
-    if [ -x "$(command -v dircolors)" ]; then
-        if [ -r "$HOME/.dircolors" ]; then
-            eval "$(dircolors -b "$HOME/.dircolors")"
-        else
-            eval "$(dircolors -b)"
-        fi
-    fi
-}
-
-# configure history's format to: <num>  [yyyy-mm-dd 00:00:00] <cmd>
-function config_history_format() {
-    export HISTCONTROL='ignoreboth:erasedups'
-    export HISTTIMEFORMAT='[%Y-%m-%d %T] '
-    shopt -s 'histappend'
-}
-
-# configure local MiniPrompt's bin
-function config_my_bin() {
-    if [[ "$my_bin" == "false" ]]; then
-        :
-    elif [[ "$my_bin" == "true" ]]; then
-        for config in "$(dirname "$(miniprompt_path)")"/config.d/*.sh; do
-            source "$config"
-        done
-
-        for config in "$HOME/.profile" "$HOME/.bash_aliases"; do
-            if [ -f "$config" ]; then
-              source "$config"
-            fi
-        done
-    else
-        echo -e "Variable 'my_bin' was set to '$my_bin', which is not a valid value. It can only be set to 'true' or 'false' in $this"
-    fi
-}
-
 # config func's 'main'
 function configure_miniprompt() {
 
@@ -176,10 +112,7 @@ function configure_miniprompt() {
     export PS1_suffix
 
     config_autocomplete
-    config_dircolors
-    config_history_format
     config_extensions
-    config_my_bin
 }
 
 # uncomment if you want miniprompt to be capturing the dir where it's located at all the time
