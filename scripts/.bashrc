@@ -14,11 +14,11 @@ MINIPROMPT_ENABLED=true
 
 # >>> MiniPrompt initialize >>>
 if [[ "$MINIPROMPT_ENABLED" == "true" ]]; then
-    # source the file
-
     # check if current shell is interactive
     # if .bashrc doesn't do this by default, uncomment the line below and comment the line that only says source /usr/local/bin/MiniPrompt*/mini_prompt.sh
     # [[ $- == *i* ]] && source /usr/local/bin/MiniPrompt*/mini_prompt.sh || echo -e "You are currently not in an interactive shell, thus MiniPrompt can't load"
+    
+    # source the files
     source /usr/local/bin/MiniPrompt*/mini_prompt
     source /usr/local/bin/MiniPrompt*/scripts/extras.sh
 elif [[ "$MINIPROMPT_ENABLED" == "false" ]]; then
@@ -35,11 +35,11 @@ elif [[ "$MINIPROMPT_ENABLED" == "false" ]]; then
 
     # If this is an xterm set the title to user@host:dir
     case "$TERM" in
-    xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-        ;;
-    *)
-        ;;
+        xterm*|rxvt*)
+            PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+            ;;
+        *)
+            ;;
     esac
 
 else

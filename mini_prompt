@@ -12,7 +12,7 @@
 # Minimalist Prompt, a decluttered and lightning fast, yet, feature rich, bash prompt!
 
 # NAME:  MiniPrompt
-# VER:   v0.3.1-beta
+# VER:   v0.3.8-beta
 # PLAT:  linux-64, MacOS (w/ bash)
 
 #-------------------=== Prompt Config ===------------------------------->>>
@@ -151,6 +151,9 @@ function add_exit_code_to_prompt() {
 
 # find and export each exten' executable
 function config_extensions() {
+    
+    # if the place were kube, git, and ssh are installed varies, consider uncommenting these lines and commenting the ones
+    # after the space
     # export bin_git
     # export bin_kubectl
     # export bin_ssh
@@ -161,15 +164,11 @@ function config_extensions() {
     export bin_git="/usr/bin/git"
     export bin_kubectl="/usr/bin/kubectl"
     export bin_ssh="/usr/bin/ssh"
-    # bin_git="$(command -v git)"
-    # bin_ssh="$(command -v ssh)"
-    # bin_kubectl="$(command -v kubectl)"
 }
 
 # display git branch of current repo, if located at one
 function add_git_to_prompt() {
     if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ]]; then
-        # local branch=`git branch --show-current`
         PS1_content="${PS1_content:-} (${git_branch_icon} `git branch --show-current`)"
     else
         :
@@ -242,14 +241,7 @@ function clean_variables() {
 }
 
 # initialize the program
-function __init() {
-    # if [[ "$-" == *i* ]]; then
-    #     configure_miniprompt
-    #     if [[ "$PROMPT_COMMAND" != *main_prompt* ]]; then
-    #         export PROMPT_COMMAND="main_prompt;$PROMPT_COMMAND"
-    #     fi
-    # fi
-
+function __init__Mini_Prompt() {
     configure_miniprompt
     export PROMPT_COMMAND="main_prompt;$PROMPT_COMMAND"
 }
@@ -257,7 +249,7 @@ function __init() {
 
 # initialization
 if [[ "$skip_init" == "false" ]]; then
-    __init
+    __init__Mini_Prompt
 elif [[ "$skip_init" == "true" ]]; then
     : # skips initialization
 else
