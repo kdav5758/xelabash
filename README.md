@@ -82,9 +82,9 @@
     * [Setup](#setup)
 * [Configuration](#-configuration)
     * [Annotations](#annotations)
-* [Inspirations](#☁%EF%B8%8F-inspirations)
+* [Inspirations](#-inspirations)
 * [FAQ](#-faq)
-* [Reporting Issues](#⚠%EF%B8%8F-reporting-issues)
+* [Reporting Issues](#-reporting-issues)
 
 ## 📋 Features
 
@@ -506,7 +506,7 @@ As you can see, by default everything but `add_exit` and `extras` are turned off
 - If `$prompt_init` is set to false, MiniPrompt won't be initialized.
 - If `$extras_enabled` is set to false, the `extras.sh` file won't be initialized.
 
-## ☁️ Inspirations
+## 💭 Inspirations
 The following ones are the projects that inspired the creating of MiniPrompt. If possible go check them out to see why they are so amazing ;)
 - [aelindeman/xelabash](https://github.com/aelindeman/xelabash): Bash prompt with minimal functions.
 - [starship/starship](https://github.com/starship/starship): Customizable cross-shell prompt.
@@ -545,7 +545,7 @@ fi
 unset color_prompt force_color_prompt
 ```
 
-## ⚠️ Reporting Issues
+## 🧪 Reporting Issues
 Issues are used to track todos, bugs, feature requests, and more, in this case this project has no special way for making issues, thus you can simply go to the [Issues section](https://github.com/kdav5758/MiniPrompt/issues).
 
 
