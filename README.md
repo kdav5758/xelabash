@@ -24,8 +24,8 @@
     /></a>
     <a href="https://github.com/kdav5758/MiniPrompt/releases"
         ><img
-            src="https://img.shields.io/github/downloads/kdav5758/MiniPrompt/total"
-            alt="Amount of downloads"/></a
+            src="https://img.shields.io/github/languages/count/kdav5758/MiniPrompt"
+            alt="Languages"/></a
     ><br />
     <a href="https://github.com/kdav5758/MiniPrompt/releases"
         ><img
