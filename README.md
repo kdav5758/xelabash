@@ -7,39 +7,39 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/kdav5758/MiniPrompt"
+    <a href="https://github.com/Pocco81/MiniPrompt"
         ><img
-            src="https://img.shields.io/github/repo-size/kdav5758/MiniPrompt"
+            src="https://img.shields.io/github/repo-size/Pocco81/MiniPrompt"
             alt="GitHub repository size"
     /></a>
-    <a href="https://github.com/kdav5758/MiniPrompt/issues"
+    <a href="https://github.com/Pocco81/MiniPrompt/issues"
         ><img
-            src="https://img.shields.io/github/issues/kdav5758/MiniPrompt"
+            src="https://img.shields.io/github/issues/Pocco81/MiniPrompt"
             alt="Issues"
     /></a>
-    <a href="https://github.com/kdav5758/MiniPrompt/blob/main/LICENSE"
+    <a href="https://github.com/Pocco81/MiniPrompt/blob/main/LICENSE"
         ><img
-            src="https://img.shields.io/github/license/kdav5758/MiniPrompt"
+            src="https://img.shields.io/github/license/Pocco81/MiniPrompt"
             alt="License"
     /></a>
-    <a href="https://github.com/kdav5758/MiniPrompt/releases"
+    <a href="https://github.com/Pocco81/MiniPrompt/releases"
         ><img
-            src="https://img.shields.io/github/languages/count/kdav5758/MiniPrompt"
+            src="https://img.shields.io/github/languages/count/Pocco81/MiniPrompt"
             alt="Languages"/></a
     ><br />
-    <a href="https://github.com/kdav5758/MiniPrompt/releases"
+    <a href="https://github.com/Pocco81/MiniPrompt/releases"
         ><img
-            src="https://img.shields.io/github/v/release/kdav5758/MiniPrompt"
+            src="https://img.shields.io/github/v/release/Pocco81/MiniPrompt"
             alt="Latest release"
     /></a>
-    <a href="https://github.com/kdav5758/MiniPrompt/tree/dev"
+    <a href="https://github.com/Pocco81/MiniPrompt/tree/dev"
             ><img
-            src="https://img.shields.io/github/last-commit/kdav5758/MiniPrompt/dev"
+            src="https://img.shields.io/github/last-commit/Pocco81/MiniPrompt/dev"
             alt="Latest commit on dev branch"
     /></a>
-    <a href="https://github.com/kdav5758/MiniPrompt/stargazers"
+    <a href="https://github.com/Pocco81/MiniPrompt/stargazers"
         ><img
-            src="https://img.shields.io/github/stars/kdav5758/MiniPrompt"
+            src="https://img.shields.io/github/stars/Pocco81/MiniPrompt"
             alt="Repository's starts"
     /></a>
 </p>
@@ -324,7 +324,7 @@ Examples:
 
 ### Download
 MiniPrompt can be downloaded in two different forms:
-1. Stable: Going to the [realses page](https://github.com/kdav5758/MiniPrompt/releases) of the repository and downloading the .zip file.
+1. Stable: Going to the [realses page](https://github.com/Pocco81/MiniPrompt/releases) of the repository and downloading the .zip file.
 2. Testing: Cloning the repository from the `dev` branch to get latest and yet to be released features.
     1. Manually
     2. Using the `install.sh` script
@@ -385,7 +385,7 @@ MiniPrompt can be downloaded in two different forms:
 
 ```
 $ cd /tmp/
-$ wget https://github.com/kdav5758/MiniPrompt/archive/refs/tags/<tag_name>.zip # e.g. https://github.com/kdav5758/MiniPrompt/archive/refs/tags/v0.1.5.zip
+$ wget https://github.com/Pocco81/MiniPrompt/archive/refs/tags/<tag_name>.zip # e.g. https://github.com/Pocco81/MiniPrompt/archive/refs/tags/v0.1.5.zip
 $ unzip *.zip
 $ sudo chmod 775 /usr/local/bin
 $ sudo mv /tmp/MiniPrompt* /usr/local/bin/
@@ -411,7 +411,7 @@ $ cd /usr/local/bin/MiniPrompt*
 ```bash
 $ sudo chmod 775 /usr/local/bin
 $ cd /usr/local/bin/
-$ git clone https://github.com/kdav5758/.dotfiles/tree/dev
+$ git clone https://github.com/Pocco81/.dotfiles/tree/dev
 $ sudo chmod 775 /usr/local/bin/MiniPrompt/mini_prompt.sh; sudo chmod 775 /usr/local/bin/MiniPrompt/scripts/on_da_fly.sh
 ```
 </p>
@@ -429,7 +429,7 @@ $ sudo chmod 775 /usr/local/bin/MiniPrompt/mini_prompt.sh; sudo chmod 775 /usr/l
 <p>
 
 ```bash
-$ wget --output-document=/tmp/install.sh https://github.com/kdav5758/MiniPrompt/blob/dev/scripts/install.sh
+$ wget --output-document=/tmp/install.sh https://github.com/Pocco81/MiniPrompt/blob/dev/scripts/install.sh
 $ sudo chmod 775 /tmp/install.sh
 $ bash /tmp/install.sh
 ```
@@ -440,11 +440,11 @@ $ bash /tmp/install.sh
 ---
 
 ### Setup
-Now that you have MiniPrompt downloaded with the appropriate execution permissions, you'll have to configure it on your `.bashrc` file, usually located at `$HOME`. You should copy and paste the contents of the [.bashrc file located in the repo](https://github.com/kdav5758/MiniPrompt/blob/main/scripts/.bashrc) to `~/.bashrc` (or wherever it's located at). However, you can also use this commands:
+Now that you have MiniPrompt downloaded with the appropriate execution permissions, you'll have to configure it on your `.bashrc` file, usually located at `$HOME`. You should copy and paste the contents of the [.bashrc file located in the repo](https://github.com/Pocco81/MiniPrompt/blob/main/scripts/.bashrc) to `~/.bashrc` (or wherever it's located at). However, you can also use this commands:
 
 ```bash
 $ cd /tmp/
-$ wget https://raw.githubusercontent.com/kdav5758/MiniPrompt/main/scripts/.bashrc
+$ wget https://raw.githubusercontent.com/Pocco81/MiniPrompt/main/scripts/.bashrc
 $ cat .bashrc >> ~/.bashrc
 ```
 
@@ -452,8 +452,8 @@ $ cat .bashrc >> ~/.bashrc
 
 ## 🍉 Configuration
 The configuration is splitted into two parts:
-1. At the top of [mini_prompt.sh](https://github.com/kdav5758/MiniPrompt/blob/main/mini_prompt.sh)
-2. At the top of [extras.sh](https://github.com/kdav5758/MiniPrompt/blob/main/scripts/extras.sh)
+1. At the top of [mini_prompt.sh](https://github.com/Pocco81/MiniPrompt/blob/main/mini_prompt.sh)
+2. At the top of [extras.sh](https://github.com/Pocco81/MiniPrompt/blob/main/scripts/extras.sh)
 
 On the first hand, `mini_prompt.sh` contains the "main" configuration such as prompt's symbols, main methods, extensions, etc. These are are the defaults:
 
@@ -546,6 +546,6 @@ unset color_prompt force_color_prompt
 ```
 
 ## 🧪 Reporting Issues
-Issues are used to track todos, bugs, feature requests, and more, in this case this project has no special way for making issues, thus you can simply go to the [Issues section](https://github.com/kdav5758/MiniPrompt/issues).
+Issues are used to track todos, bugs, feature requests, and more, in this case this project has no special way for making issues, thus you can simply go to the [Issues section](https://github.com/Pocco81/MiniPrompt/issues).
 
 
