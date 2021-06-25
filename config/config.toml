@@ -1,0 +1,27 @@
+# Config file for MiniPrompt
+
+[prompt]
+
+[prompt.body]
+main_prompt = '[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]'
+
+[prompt.extensions]
+main = false
+git_prompt = true
+ssh_prompt = false
+kube_prompt = false
+
+[prompt.colors]
+success = '\[\e[0m\]'
+error = '\[\e[1;31m\]'
+
+[symbols]
+success = "λ"
+error = "✗"
+git_branch = ""
+kubernetes_container = ""
+
+[extras]
+main = true
+directory_colors = true
+improved_history = true

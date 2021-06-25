@@ -15,19 +15,25 @@
 # VER:   v0.3.8-beta
 # PLAT:  linux-64, MacOS (w/ bash)
 
+# important vars
+PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+# this_script=`basename "$0"`
+
+source "${PARENT_PATH}/utils/caller.sh"
+
 #-------------------=== Prompt Config ===------------------------------->>>
 
 # prompt symbols
-success_symbol="λ"
-error_symbol="✗"
-git_branch_icon=""
-kube_icon=""
+__miniprompt_success_symbol=$(pcall symbols success)
+__miniprompt_error_symbol=$(pcall symbols error)
+__miniprompt_git_branch_icon=$(pcall symbols git_branch)
+__miniprompt_kube_icon=$(pcall symbols kubernetes_container)
 
 # other
 reset="\[\e[m\]"
 this="$(basename "${BASH_SOURCE[0]}")"
 skip_init=false
-usr_content="[\[\e[3;33m\]\w\[\e[0m\]]\[\e[1;32m\]"
+usr_content=$(pcall prompt.body main_prompt)
 
 # main functionalities
 add_exit=true
@@ -35,20 +41,23 @@ add_exit=true
 # extras
 # extras are configured from `/usr/local/bin/scripts/extras.sh`
 # they can all be enabled or disabled with this variable
-export extras_enabled=true
+export extras_enabled=error_color=$(pcall extras main)
 # history
 # dir colors
 
 # extensions
-extensions_main=false
-GIT_PROMPT=true
-SSH_PROMPT=false
-KUBE_PROMPT=false
+extensions_main=$(pcall prompt.extensions main)
+GIT_PROMPT=$(pcall prompt.extensions git_prompt)
+SSH_PROMPT=$(pcall prompt.extensions ssh_prompt)
+KUBE_PROMPT=$(pcall prompt.extensions kube_prompt)
 
 #-------------------=== Prompt Config ===-------------------------------<<<
 
 #-------------------=== Colors ===-------------------------------
 # main
+error_color=$(pcall prompt.colors error)
+success_color=$(pcall prompt.colors success)
+
 light_green="\[\e[1;32m\]"
 light_red="\[\e[1;31m\]"
 yellow="\[\e[0;33m\]"
@@ -133,13 +142,13 @@ function reset_prompt() {
         # export PS1_content='\[\e[1m\]\w\[\e[0m\]'
         # export PS1_content='\[\e]0;\u@\h: \w\a\]\e[1;34m\e[3;32m\w\e[0m\e[0m > '
 
-    export PS1_suffix=" ${success_symbol}\[\e[0m\] "
+    export PS1_suffix=" ${__miniprompt_success_symbol}\[\e[0m\] "
 }
 
 # make PS1_suffix red if the previous command failed
 function add_exit_code_to_prompt() {
     if [[ "$add_exit" == "true" ]]; then
-        [ "$PS1_previous_exit" -ne 0 ] && PS1_suffix="${light_red} ${error_symbol} ${reset}"
+        [ "$PS1_previous_exit" -ne 0 ] && PS1_suffix="${light_red} ${__miniprompt_error_symbol} ${reset}"
     elif [[ "$add_exit" == "false" ]]; then
         :
     else
@@ -169,7 +178,7 @@ function config_extensions() {
 # display git branch of current repo, if located at one
 function add_git_to_prompt() {
     if [[ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ]]; then
-        PS1_content="${PS1_content:-} (${git_branch_icon} `git branch --show-current`)"
+        PS1_content="${PS1_content:-} (${__miniprompt_git_branch_icon} `git branch --show-current`)"
     else
         :
     fi
@@ -181,7 +190,7 @@ function add_kube_to_prompt() {
     local namespace
     context="$(kubectl config view -o=jsonpath='{.current-context}')"
     namespace="$(kubectl config view -o=jsonpath="{.contexts[?(@.name==\"${context}\")].context.namespace}")"
-    PS1_content="${PS1_content:-} ${kube_icon}\[\e[34m\]${context}${namespace:+:$namespace}\[\e[0m\]"
+    PS1_content="${PS1_content:-} ${__miniprompt_kube_icon}\[\e[34m\]${context}${namespace:+:$namespace}\[\e[0m\]"
 }
 
 # display user@hostname to prompt, if connected via ssh
@@ -246,12 +255,9 @@ function __init__Mini_Prompt() {
     export PROMPT_COMMAND="main_prompt;$PROMPT_COMMAND"
 }
 
-
 # initialization
 if [[ "$skip_init" == "false" ]]; then
     __init__Mini_Prompt
-elif [[ "$skip_init" == "true" ]]; then
-    : # skips initialization
 else
     echo -e "Configuration variable 'skip_init' was set to '$skip_init', which is not a valid value. It can either be set to 'true' or 'false' in $this."
 fi
